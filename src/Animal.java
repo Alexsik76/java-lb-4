@@ -25,13 +25,13 @@ abstract class Mammal extends Animal {
     }
 }
 
-class Lion extends Animal {
+class Lion extends Mammal {
     Lion(String name) {
         super(name);
     }
 }
 
-abstract class Ungulates extends Animal {
+abstract class Ungulates extends Mammal {
     Ungulates(String name) {
         super(name);
     }
