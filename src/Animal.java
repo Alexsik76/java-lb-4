@@ -1,9 +1,11 @@
 public abstract class Animal {
     public String name;
-    Animal(String name){
+
+    Animal(String name) {
         this.name = name;
     }
 }
+
 abstract class Bird extends Animal {
     Bird(String name) {
         super(name);
@@ -23,7 +25,7 @@ abstract class Mammal extends Animal {
     }
 }
 
-class Lion extends Animal{
+class Lion extends Animal {
     Lion(String name) {
         super(name);
     }
@@ -35,13 +37,13 @@ abstract class Ungulates extends Animal {
     }
 }
 
-class Giraffe extends Ungulates{
+class Giraffe extends Ungulates {
     Giraffe(String name) {
         super(name);
     }
 }
 
-class Zebra extends Ungulates{
+class Zebra extends Ungulates {
     Zebra(String name) {
         super(name);
     }

@@ -1,9 +1,9 @@
 import java.util.ArrayList;
 import java.util.List;
 
-public abstract class Cage <Animal> {
-    private final int capacity;
-    private final List<Animal> animals = new ArrayList<>();
+public abstract class Cage<Animal> {
+    protected final int capacity;
+    protected final List<Animal> animals = new ArrayList<>();
 
     Cage(int capacity) {
         if (capacity <= 0) {
@@ -11,11 +11,13 @@ public abstract class Cage <Animal> {
         }
         this.capacity = capacity;
     }
+
     public int getCapacity() {
         return capacity;
     }
 
-    public void add(Animal animal) {
+    public void add(Animal animal)
+    {
         if (animals.size() >= capacity) {
             throw new UnsupportedOperationException("Cage is full!");
         }
@@ -23,60 +25,45 @@ public abstract class Cage <Animal> {
     }
 
     public void remove(Animal animal) {
-        if (!animals.remove(animal)) {
+        if (animals.isEmpty()) {
             throw new UnsupportedOperationException("Animal not found in the cage!");
         }
+        animals.remove(animal);
+    }
+
+    public int getCapacityOfCage() {
+        return capacity;
+    }
+
+    public List<? extends Animal> getAnimals() {
+        return animals;
+    }
+
+    public int getCountOfAnimals() {
+        return animals.size();
     }
 }
+
 class BirdCage extends Cage<Bird> {
     BirdCage(int capacity) {
         super(capacity);
     }
-
-    @Override
-    public void add(Bird bird) {
-        super.add(bird);
-    }
-
-    @Override
-    public void remove(Bird bird) {
-        super.remove(bird);
-    }
 }
 
-abstract class AnimalCage<Mammal> extends Cage<Mammal> {
-    AnimalCage(int capacity) {
+abstract class MammalCage<Mammal> extends Cage<Mammal> {
+    MammalCage(int capacity) {
         super(capacity);
     }
 }
 
-class LionCage extends AnimalCage <Lion>{
+class LionCage extends MammalCage<Lion> {
     LionCage(int capacity) {
         super(capacity);
     }
-
-    @Override
-    public void add(Lion animal) {
-
-    }
-
-    @Override
-    public void remove(Lion animal) {
-
-    }
 }
-class UngulatesCage<Ungulates extends AnimalCage<Mammal>> extends AnimalCage<Ungulates>{
+
+class UngulatesCage extends MammalCage<Ungulates> {
     UngulatesCage(int capacity) {
         super(capacity);
-    }
-
-    @Override
-    public void add(Ungulates animal) {
-
-    }
-
-    @Override
-    public void remove(Ungulates animal) {
-
     }
 }
