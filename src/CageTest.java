@@ -33,9 +33,7 @@ class CageTest {
         LionCage lionCage = new LionCage(1);
         Animal bird1 = new Eagle("Eagle");
 
-        Exception exception = assertThrows(ClassCastException.class, () -> {
-            lionCage.add((Lion) bird1);
-        });
+        Exception exception = assertThrows(ClassCastException.class, () -> lionCage.add((Lion) bird1));
         assertEquals("class Eagle cannot be cast to class Lion (Eagle and Lion are in unnamed module of loader 'app')", exception.getMessage());
     }
 
