@@ -2,7 +2,9 @@ import java.util.Map;
 import java.util.Scanner;
 
 public final class Menu {
-    private Menu(){}
+    private Menu() {
+    }
+
     public static void run(Zoo zoo) {
         Scanner scanner = new Scanner(System.in);
 
@@ -25,9 +27,9 @@ public final class Menu {
                     System.out.println("Enter animal type (number) (1: Eagle, 2: Lion, 3: Zebra, 4: Giraffe): ");
                     String type = scanner.nextLine();
                     System.out.println("Enter animal name: ");
-                    Cage <Bird> bcage = (Cage<Bird>) zoo.get_cage_by_name("birdCage");
-                    Cage <Lion> lcage = (Cage<Lion>) zoo.get_cage_by_name("lionCage");
-                    Cage <Ungulates> ucage = (Cage<Ungulates>) zoo.get_cage_by_name("ungulatesCage");
+                    Cage<Bird> bcage = (Cage<Bird>) zoo.get_cage_by_name("birdCage");
+                    Cage<Lion> lcage = (Cage<Lion>) zoo.get_cage_by_name("lionCage");
+                    Cage<Ungulates> ucage = (Cage<Ungulates>) zoo.get_cage_by_name("ungulatesCage");
                     String name = scanner.nextLine();
 
 
@@ -84,7 +86,7 @@ public final class Menu {
                     break;
 
                 case 5: // Завантаження тварин з файлу
-                   FileSystem.load(zoo);
+                    FileSystem.load(zoo);
                     break;
                 case 6:
                     running = false;

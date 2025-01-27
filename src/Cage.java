@@ -18,8 +18,7 @@ public abstract class Cage<Animal> implements java.io.Serializable {
         return capacity;
     }
 
-    public void add(Animal animal)
-    {
+    public void add(Animal animal) {
         if (animals.size() >= capacity) {
             throw new UnsupportedOperationException("Cage is full!");
         }

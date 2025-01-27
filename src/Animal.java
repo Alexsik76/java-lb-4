@@ -1,4 +1,4 @@
-public abstract class Animal implements java.io.Serializable{
+public abstract class Animal implements java.io.Serializable {
     public String name;
 
     Animal(String name) {

@@ -28,6 +28,7 @@ class CageTest {
         Exception exception = assertThrows(UnsupportedOperationException.class, () -> lionCage.add(lion2));
         assertEquals("Cage is full!", exception.getMessage());
     }
+
     @Test
     void testAddWrongAnimalTypeToCageThrowsException() {
         LionCage lionCage = new LionCage("lionCage", 1);
@@ -66,7 +67,7 @@ class CageTest {
 
     @Test
     void testAddAnimalWithNegativeCapacityCageThrowsException() {
-        Exception exception = assertThrows(IllegalArgumentException.class, () -> new LionCage("lionCage",-1));
+        Exception exception = assertThrows(IllegalArgumentException.class, () -> new LionCage("lionCage", -1));
         assertEquals("Capacity must be positive", exception.getMessage());
     }
 }

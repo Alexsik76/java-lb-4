@@ -2,7 +2,9 @@ import java.io.*;
 import java.util.List;
 
 public final class FileSystem {
-    private FileSystem() {}
+    private FileSystem() {
+    }
+
     public static void save(Zoo zoo) {
         try (ObjectOutputStream oos = new ObjectOutputStream(new FileOutputStream("animals.dat"))) {
             oos.writeObject(zoo.cages);
@@ -12,6 +14,7 @@ public final class FileSystem {
             e.printStackTrace();
         }
     }
+
     public static void load(Zoo zoo) {
         try (ObjectInputStream ois = new ObjectInputStream(new FileInputStream("animals.dat"))) {
             zoo.cages = (List<Cage<? extends Animal>>) ois.readObject();

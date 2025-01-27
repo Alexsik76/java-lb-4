@@ -1,6 +1,6 @@
 import java.util.*;
 
-public class Zoo implements java.io.Serializable{
+public class Zoo implements java.io.Serializable {
     public List<Cage<? extends Animal>> cages = new ArrayList<>();
 
     public int getCountOfAnimals() {
@@ -16,8 +16,8 @@ public class Zoo implements java.io.Serializable{
         cages.add(cage);
     }
 
-    public Map<Integer,Animal> get_animals_map() {
-        Map<Integer,Animal> animals_map = new HashMap<>();
+    public Map<Integer, Animal> get_animals_map() {
+        Map<Integer, Animal> animals_map = new HashMap<>();
         int index = 1;
         for (Cage<? extends Animal> cage : cages) {
             Collection<? extends Animal> all_animals = cage.getAnimals();
