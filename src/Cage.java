@@ -1,14 +1,16 @@
 import java.util.ArrayList;
 import java.util.List;
 
-public abstract class Cage<Animal> {
+public abstract class Cage<Animal> implements java.io.Serializable {
+    protected final String name;
     protected final int capacity;
     protected final List<Animal> animals = new ArrayList<>();
 
-    Cage(int capacity) {
+    Cage(String name, int capacity) {
         if (capacity <= 0) {
             throw new IllegalArgumentException("Capacity must be positive");
         }
+        this.name = name;
         this.capacity = capacity;
     }
 
@@ -31,10 +33,6 @@ public abstract class Cage<Animal> {
         animals.remove(animal);
     }
 
-    public int getCapacityOfCage() {
-        return capacity;
-    }
-
     public List<? extends Animal> getAnimals() {
         return animals;
     }
@@ -45,25 +43,25 @@ public abstract class Cage<Animal> {
 }
 
 class BirdCage extends Cage<Bird> {
-    BirdCage(int capacity) {
-        super(capacity);
+    BirdCage(String name, int capacity) {
+        super(name, capacity);
     }
 }
 
 abstract class MammalCage<Mammal> extends Cage<Mammal> {
-    MammalCage(int capacity) {
-        super(capacity);
+    MammalCage(String name, int capacity) {
+        super(name, capacity);
     }
 }
 
 class LionCage extends MammalCage<Lion> {
-    LionCage(int capacity) {
-        super(capacity);
+    LionCage(String name, int capacity) {
+        super(name, capacity);
     }
 }
 
 class UngulatesCage extends MammalCage<Ungulates> {
-    UngulatesCage(int capacity) {
-        super(capacity);
+    UngulatesCage(String name, int capacity) {
+        super(name, capacity);
     }
 }

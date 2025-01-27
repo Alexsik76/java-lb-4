@@ -1,6 +1,6 @@
 import java.util.*;
 
-public class Zoo {
+public class Zoo implements java.io.Serializable{
     public List<Cage<? extends Animal>> cages = new ArrayList<>();
 
     public int getCountOfAnimals() {
@@ -33,6 +33,15 @@ public class Zoo {
     public Cage<? extends Animal> get_cage_by_animal(Animal animal) {
         for (Cage<? extends Animal> cage : cages) {
             if (cage.getAnimals().contains(animal)) {
+                return cage;
+            }
+        }
+        return null;
+    }
+
+    public Cage<? extends Animal> get_cage_by_name(String name) {
+        for (Cage<? extends Animal> cage : cages) {
+            if (cage.name.equals(name)) {
                 return cage;
             }
         }

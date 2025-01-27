@@ -8,7 +8,7 @@ class CageTest {
 
     @Test
     void testAddAnimalSuccessfully() {
-        BirdCage birdCage = new BirdCage(2);
+        BirdCage birdCage = new BirdCage("birdCage", 2);
         Bird bird1 = new Eagle("Rio");
         birdCage.add(bird1);
 
@@ -19,7 +19,7 @@ class CageTest {
 
     @Test
     void testAddAnimalToFullCageThrowsException() {
-        LionCage lionCage = new LionCage(1);
+        LionCage lionCage = new LionCage("lionCage", 1);
         Lion lion1 = new Lion("Alex");
         Lion lion2 = new Lion("Leon");
 
@@ -30,7 +30,7 @@ class CageTest {
     }
     @Test
     void testAddWrongAnimalTypeToCageThrowsException() {
-        LionCage lionCage = new LionCage(1);
+        LionCage lionCage = new LionCage("lionCage", 1);
         Animal bird1 = new Eagle("Eagle");
 
         Exception exception = assertThrows(ClassCastException.class, () -> lionCage.add((Lion) bird1));
@@ -40,7 +40,7 @@ class CageTest {
 
     @Test
     void testAddMultipleAnimalsUntilCageIsFull() {
-        BirdCage birdCage = new BirdCage(3);
+        BirdCage birdCage = new BirdCage("BirdCage", 3);
         Eagle animal1 = new Eagle("Penguin1");
         Eagle animal2 = new Eagle("Penguin2");
         Eagle animal3 = new Eagle("Penguin3");
@@ -60,13 +60,13 @@ class CageTest {
 
     @Test
     void testAddAnimalWithZeroCapacityCageThrowsException() {
-        Exception exception = assertThrows(IllegalArgumentException.class, () -> new BirdCage(0));
+        Exception exception = assertThrows(IllegalArgumentException.class, () -> new BirdCage("birdCage", 0));
         assertEquals("Capacity must be positive", exception.getMessage());
     }
 
     @Test
     void testAddAnimalWithNegativeCapacityCageThrowsException() {
-        Exception exception = assertThrows(IllegalArgumentException.class, () -> new LionCage(-1));
+        Exception exception = assertThrows(IllegalArgumentException.class, () -> new LionCage("lionCage",-1));
         assertEquals("Capacity must be positive", exception.getMessage());
     }
 }
